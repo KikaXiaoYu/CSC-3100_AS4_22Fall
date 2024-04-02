@@ -1,0 +1,13 @@
+
+\section{Median Search Tree}
+This problem asks to do some operations on the median 2k values among 2n numbers. 
+
+The source code is in A4\_P2\_121090642.cpp
+
+This question is easy to solve. We can maintain two heaps to do it. The two heaps are big-top heap and small-top heap. If we can let all the big-top heap's element smaller than the top of the small-top heap, and the numbers are uniformly divided into these two heaps, then we can get the 2k median numbers and do the insertion and deletion efficiently.
+
+Each time we insert, we maintain the numbers in two heaps are equal or the number of big-top heap is bigger than the small-top heap at most 1. The time compelixity for such insertion is $O(lgN)$, because the insertion for the heap is $O(lgN)$. The function in my code called \textbf{void insert(int w)} does this operation.
+
+For output of the median 2k numbers, we need to pop all the k numbers in each heap and then put them back. the time compelixity is $O(4*k*lgN)$. The function in my code called \textbf{void outputMedian()} does this operation.
+
+For deletion, it is similar to the output operation. The time compelixity is $O(4*k*lgN)$. The function in my code called \textbf{void deleteP(int p)} does this operation.

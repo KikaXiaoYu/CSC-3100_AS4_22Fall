@@ -1,0 +1,25 @@
+
+
+\section{Special Shortest Path}
+This problem asks to find a special shortest path when the graph consists a special variable K and somtimes the consuming varies depending on K. 
+
+The source code is in A4\_P1\_121090642.cpp
+
+For this problem, we can change the original graph G(E,V) to a new graph G(E',V') by adding some nodes and edges to G. For example, when K = 2, and we have a path \textbf{1}-->(2)--> \textbf{2}-->(4)--> \textbf{3}-->(8)-->\textbf{4}, then we can add one node5 between node1 and node2, add node6 between node2 and node3, and add node7 between node3 and node4. Then we can add edge with length $\frac{(K-1)*2}{2}=1$ between node5 and node6, add edge with length $\frac{(K-1)*4}{2}=2$ between node6 and node7. Then we use Dijkstra algorithm to solve the shortest path problem, and we get 8 as the shortest path for node4, the final result is 0 2 4 8.
+
+If we can get such graph, then the problem solved. To get this graph, we need to consider each line of the input. Each line of the input tells us an edge's length and two nodes. For the two nodes, we have an additional new node in G', hence the total number in G' must be (m+n). However, when I first consider like this, I miss one point. That is, this is a graph with no direction, hence in fact there are two direcitve edges between two nodes. As a result, the total number of the node in G' must be (m+2*n). Then, we add two edge between them, which count for 4 edges.
+
+Each time when we insert a line of data, we form such basic situation. Moreover, we can add our special path during this process. For each node, when we insert it, we find this node adds two edges to itself, and such edges are in pair. Then we can search all the previous edges the node have and consider whether we need to add the path.
+
+In order to implement my algorithm, we must save both the edges to and from one node. For one node, there are two kinds of cases. The first is some edges' length, say $l_1$, is K time of the new added edge, then we need to let the new edges' "node" to point to such edge. And the second is $l_2$, is 1/K time of the new added edge, then we need to let such edges' "node" to point to our new edge.
+
+Such algorithm is done by the function \textbf{void insertGeneralEdge(int u, int v, lldouble w)}, and the function \textbf{void addsingleDirectEdge(int a, int b, lldouble w)} and \textbf{void addSpecialEdge(lldouble w, int a, int size, int atob, int btoa)} help it.
+
+We do this for two new nodes, then we continuously insert all the nodes, then the graph has already been our expected G'. We do Dijkstra algorithm, say the function \textbf{void dijkstra()} to solve it directly.
+
+Note that the number of nodes is very large, hence it is not convinient to use adj-matrix, so we use \textbf{vector<vector<> >} to save all the datas, similar to the linked list.
+
+We also use heap to implement the algorithm, so the time complexity for Dijkstra is $O(V+VlgV+ElgV)$, and for the insertion, the time complexity is $O(V+E+4*E+E^2)$, but since the special path is not quite a lot, we have this $E^2$ would not be too large.
+
+
+

@@ -1,0 +1,24 @@
+{
+    "files.associations": {
+        "array": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp",
+        "ostream": "cpp",
+        "deque": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "random": "cpp",
+        "*.tcc": "cpp",
+        "exception": "cpp",
+        "cmath": "cpp",
+        "iosfwd": "cpp",
+        "limits": "cpp",
+        "numbers": "cpp",
+        "stdexcept": "cpp",
+        "streambuf": "cpp",
+        "system_error": "cpp",
+        "tuple": "cpp",
+        "typeinfo": "cpp",
+        "iostream": "cpp"
+    }
+}

@@ -1,0 +1,10 @@
+\section{Football Match}
+This problem asks to find the maximum sum of the attractions of the (n-1) matches. 
+
+The source code is in A4\_P3\_121090642.cpp
+
+This problem can be easily to be converted into a problem called the maximum spanning tree. Since this is a dense graph, we use the Prim's algorithm, the time complexity of this algorithm is $O(ElgV+V^2)$ in my code, called \textbf{long long int prim(long long int start)}.
+
+For this question, we have to be concerned about the data range because the data may exceed the maximum integer limit, so in cpp we need to use long long int.
+
+If we can get such a graph, then the problem solved. To form this graph, each time we insert a popularity about one node, we calculate the new edges formed by this node. The time complexity is $O(V^2)$, because each node form n-1 edges to other nodes. The function \textbf{void addNode(long long int cur\_n, long long int value)} does this operation and the function \textbf{void insertEdge(long long int u, long long int v, long long int w)} helps with it.

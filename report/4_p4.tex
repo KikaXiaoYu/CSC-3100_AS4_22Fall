@@ -1,0 +1,10 @@
+\section{Prefix}
+This problem asks to find out how many strings in $s_1, s_2,... , s_n$ begins with $t_i$ when given $n$ strings $s_1, s_2,... , s_n$ and q queries.
+
+The source code is in A4\_P4\_121090642.cpp
+
+This is a very classic Trie Tree model. We insert each small piece of string into a tree. In this tree, each node will point to up to 26 child nodes, representing the 26 letters of abc...z. In this way, for each of a string character, we can find the corresponding layer in this tree, if there is this string in the corresponding position in that layer, then it can be output, if not, then it does not exist.
+
+When inserting, we find the pointer to the correct idx of our next string, then we update the counts in each node in order to do the search operation. The operation is implemented by the function \textbf{void insert(Node* root, string str)}. The time complexity is $O(n)$, where n is the length of the string. Or we can see the time complexity as $O(lgN)$, where N is the total number of the strings.
+
+If you want to find a string based on the prefix, you can start from the root node and search downwards according to the traversal of the string. If the prefix string has not been traversed and the tree search has ended, then the character cannot be found. After the traversal, output the record value of the node, which is the quantity we found. The operation is implemented by the function \textbf{int getNum(Node* root, string prefix)}. The time complexity is $O(n)$, where n is the length of the prefix string. Or we can see the time complexity as $O(lgN)$, where N is the total number of the strings.
